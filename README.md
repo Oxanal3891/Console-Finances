@@ -28,6 +28,7 @@ To deploy this project run 'starter/index.html' file in your browser. Then right
 
 ## Screenshots
 
+![image](https://github.com/Oxanal3891/Console-Finances/assets/148264525/c9264afb-0e54-4955-a31b-75b5ad175844)
 
 
 
