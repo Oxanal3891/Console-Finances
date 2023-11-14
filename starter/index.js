@@ -87,24 +87,13 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-console.log("Financial Analysis")
-//The total number of months included in the dataset.
-
-console.log("Total number of months in the dataset: " + finances.length);
-
-
-//The net total amount of Profit/Losses over the entire period.s
+console.log("Financial Analysis:\nTotal number of months in the dataset: " + finances.length);
 
 var sum = 0;
 for (i = 0; i < finances.length; i++) {
-  sum += finances[i][1]; // Used For Loop to add all items.
+  sum += finances[i][1];
 }
 console.log("Total Profit/Loss over the entire period: $" + sum);
-
-
-//The average of the changes in Profit/Losses over the entire period.
-//You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-//(Total / (Number of months - 1))
 
 var diff = [];
 for (i = 1; i < finances.length; i++) {
@@ -119,34 +108,16 @@ var roundToHundredth = (value) => {
 
 console.log("Average of the changes in Profit/Losses over the entire period: $" + roundToHundredth(average));
 
-// The greatest increase in Profit/Losses (date and amount) over the entire period.
-
 diff.unshift(0);
 
 var greatIncr = Math.max(...diff);
-
-for (let i = 0; i < finances.length; i++) {
-  finances[i].push(diff[i]);
-};
-
-var incrMonth;
-
-for (i = 0; i < finances.length; i++) {
-  if (finances[i][2] == greatIncr) { incrMonth = finances[i][0]; }
-}
-console.log("The greatest increase in Profit/Losses: $" + greatIncr + " in " + incrMonth);
-
-
-// The greatest decrease in Profit/Losses (date and amount) over the entire period.
-
-var decrMonth;
-
 var greatDecr = Math.min(...diff);
 
 for (i = 0; i < finances.length; i++) {
-  if (finances[i][2] == greatDecr) { decrMonth = finances[i][0]; }
-}
+  finances[i].push(diff[i]);
+  if (finances[i][2] == greatIncr) { var incrMonth = finances[i][0]; }
+  if (finances[i][2] == greatDecr) { var decrMonth = finances[i][0]; }
+};
 
-
-
+console.log("The greatest increase in Profit/Losses: $" + greatIncr + " in " + incrMonth);
 console.log("The greatest increase in Profit/Losses: $" + greatDecr + " in " + decrMonth);
