@@ -22,7 +22,7 @@ The 'starter/index.js` file contains JavaScript code that analyzes the records t
 
 ## How to Deploy
 
-To deploy this project run 'starter/index.html' file in your browser. Then right-click 'Inspect' and open the Console tab. 
+To deploy this project run index.html file in your browser. Then right-click 'Inspect' and open the Console tab. 
 
 
 
