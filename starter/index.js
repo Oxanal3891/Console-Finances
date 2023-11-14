@@ -109,18 +109,21 @@ console.log("Total Profit/Loss over the entire period: $" + sum);
 var diff = [];
 for (i = 1; i < finances.length; i++) {
   diff.push(finances[i][1] - finances[i - 1][1])
-}
-var sum = diff.reduce(function (a, b) { return a + b; }, 0);
+};
 
-console.log("Average of the changes in Profit/Losses over the entire period: $" + sum / (finances.length - 1));
+var average = (diff.reduce(function (a, b) { return a + b; }, 0)) / (finances.length - 1);
+
+var roundToHundredth = (value) => {
+  return Number(value.toFixed(2));
+};
+
+console.log("Average of the changes in Profit/Losses over the entire period: $" + roundToHundredth(average));
 
 // The greatest increase in Profit/Losses (date and amount) over the entire period.
 
 diff.unshift(0);
 
 var greatIncr = Math.max(...diff);
-
-var greatDecr = Math.min(...diff);
 
 for (let i = 0; i < finances.length; i++) {
   finances[i].push(diff[i]);
@@ -137,6 +140,8 @@ console.log("The greatest increase in Profit/Losses: $" + greatIncr + " in " + i
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
 
 var decrMonth;
+
+var greatDecr = Math.min(...diff);
 
 for (i = 0; i < finances.length; i++) {
   if (finances[i][2] == greatDecr) { decrMonth = finances[i][0]; }
